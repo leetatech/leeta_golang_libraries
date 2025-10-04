@@ -79,7 +79,7 @@ var ErrInvalidLogicOperator = fmt.Errorf("not a valid LogicOperator, try [%s]", 
 ```
 
 <a name="AggregateMetricNames"></a>
-## func AggregateMetricNames
+## func [AggregateMetricNames](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L40>)
 
 ```go
 func AggregateMetricNames() []string
@@ -88,7 +88,7 @@ func AggregateMetricNames() []string
 AggregateMetricNames returns a list of possible string values of AggregateMetric.
 
 <a name="CompareOperatorNames"></a>
-## func CompareOperatorNames
+## func [CompareOperatorNames](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L222>)
 
 ```go
 func CompareOperatorNames() []string
@@ -97,7 +97,7 @@ func CompareOperatorNames() []string
 CompareOperatorNames returns a list of possible string values of CompareOperator.
 
 <a name="ControlTypeNames"></a>
-## func ControlTypeNames
+## func [ControlTypeNames](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L367>)
 
 ```go
 func ControlTypeNames() []string
@@ -106,7 +106,7 @@ func ControlTypeNames() []string
 ControlTypeNames returns a list of possible string values of ControlType.
 
 <a name="LogicOperatorNames"></a>
-## func LogicOperatorNames
+## func [LogicOperatorNames](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L474>)
 
 ```go
 func LogicOperatorNames() []string
@@ -115,7 +115,7 @@ func LogicOperatorNames() []string
 LogicOperatorNames returns a list of possible string values of LogicOperator.
 
 <a name="AggregateMetric"></a>
-## type AggregateMetric
+## type [AggregateMetric](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type.go#L86>)
 
 AggregateMetric ENUM\(
 
@@ -152,7 +152,7 @@ const (
 ```
 
 <a name="ParseAggregateMetric"></a>
-### func ParseAggregateMetric
+### func [ParseAggregateMetric](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L67>)
 
 ```go
 func ParseAggregateMetric(name string) (AggregateMetric, error)
@@ -161,7 +161,7 @@ func ParseAggregateMetric(name string) (AggregateMetric, error)
 ParseAggregateMetric attempts to convert a string to a AggregateMetric.
 
 <a name="AggregateMetric.IsValid"></a>
-### func \(AggregateMetric\) IsValid
+### func \(AggregateMetric\) [IsValid](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L53>)
 
 ```go
 func (x AggregateMetric) IsValid() bool
@@ -170,7 +170,7 @@ func (x AggregateMetric) IsValid() bool
 IsValid provides a quick way to determine if the typed value is part of the allowed enumerated values
 
 <a name="AggregateMetric.MarshalText"></a>
-### func \(AggregateMetric\) MarshalText
+### func \(AggregateMetric\) [MarshalText](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L75>)
 
 ```go
 func (x AggregateMetric) MarshalText() ([]byte, error)
@@ -179,7 +179,7 @@ func (x AggregateMetric) MarshalText() ([]byte, error)
 MarshalText implements the text marshaller method.
 
 <a name="AggregateMetric.Scan"></a>
-### func \(\*AggregateMetric\) Scan
+### func \(\*AggregateMetric\) [Scan](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L92>)
 
 ```go
 func (x *AggregateMetric) Scan(value interface{}) (err error)
@@ -188,7 +188,7 @@ func (x *AggregateMetric) Scan(value interface{}) (err error)
 Scan implements the Scanner interface.
 
 <a name="AggregateMetric.String"></a>
-### func \(AggregateMetric\) String
+### func \(AggregateMetric\) [String](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L47>)
 
 ```go
 func (x AggregateMetric) String() string
@@ -197,7 +197,7 @@ func (x AggregateMetric) String() string
 String implements the Stringer interface.
 
 <a name="AggregateMetric.UnmarshalText"></a>
-### func \(\*AggregateMetric\) UnmarshalText
+### func \(\*AggregateMetric\) [UnmarshalText](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L80>)
 
 ```go
 func (x *AggregateMetric) UnmarshalText(text []byte) error
@@ -206,7 +206,7 @@ func (x *AggregateMetric) UnmarshalText(text []byte) error
 UnmarshalText implements the text unmarshaller method.
 
 <a name="AggregateMetric.Value"></a>
-### func \(AggregateMetric\) Value
+### func \(AggregateMetric\) [Value](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L125>)
 
 ```go
 func (x AggregateMetric) Value() (driver.Value, error)
@@ -215,7 +215,7 @@ func (x AggregateMetric) Value() (driver.Value, error)
 Value implements the driver Valuer interface.
 
 <a name="CompareOperator"></a>
-## type CompareOperator
+## type [CompareOperator](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type.go#L72>)
 
 CompareOperator ENUM\(
 
@@ -327,7 +327,7 @@ const (
 ```
 
 <a name="ParseCompareOperator"></a>
-### func ParseCompareOperator
+### func [ParseCompareOperator](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L272>)
 
 ```go
 func ParseCompareOperator(name string) (CompareOperator, error)
@@ -336,7 +336,7 @@ func ParseCompareOperator(name string) (CompareOperator, error)
 ParseCompareOperator attempts to convert a string to a CompareOperator.
 
 <a name="CompareOperator.IsValid"></a>
-### func \(CompareOperator\) IsValid
+### func \(CompareOperator\) [IsValid](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L235>)
 
 ```go
 func (x CompareOperator) IsValid() bool
@@ -345,7 +345,7 @@ func (x CompareOperator) IsValid() bool
 IsValid provides a quick way to determine if the typed value is part of the allowed enumerated values
 
 <a name="CompareOperator.MarshalText"></a>
-### func \(CompareOperator\) MarshalText
+### func \(CompareOperator\) [MarshalText](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L280>)
 
 ```go
 func (x CompareOperator) MarshalText() ([]byte, error)
@@ -354,7 +354,7 @@ func (x CompareOperator) MarshalText() ([]byte, error)
 MarshalText implements the text marshaller method.
 
 <a name="CompareOperator.Scan"></a>
-### func \(\*CompareOperator\) Scan
+### func \(\*CompareOperator\) [Scan](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L297>)
 
 ```go
 func (x *CompareOperator) Scan(value interface{}) (err error)
@@ -363,7 +363,7 @@ func (x *CompareOperator) Scan(value interface{}) (err error)
 Scan implements the Scanner interface.
 
 <a name="CompareOperator.String"></a>
-### func \(CompareOperator\) String
+### func \(CompareOperator\) [String](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L229>)
 
 ```go
 func (x CompareOperator) String() string
@@ -372,7 +372,7 @@ func (x CompareOperator) String() string
 String implements the Stringer interface.
 
 <a name="CompareOperator.UnmarshalText"></a>
-### func \(\*CompareOperator\) UnmarshalText
+### func \(\*CompareOperator\) [UnmarshalText](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L285>)
 
 ```go
 func (x *CompareOperator) UnmarshalText(text []byte) error
@@ -381,7 +381,7 @@ func (x *CompareOperator) UnmarshalText(text []byte) error
 UnmarshalText implements the text unmarshaller method.
 
 <a name="CompareOperator.Value"></a>
-### func \(CompareOperator\) Value
+### func \(CompareOperator\) [Value](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L330>)
 
 ```go
 func (x CompareOperator) Value() (driver.Value, error)
@@ -390,7 +390,7 @@ func (x CompareOperator) Value() (driver.Value, error)
 Value implements the driver Valuer interface.
 
 <a name="ControlType"></a>
-## type ControlType
+## type [ControlType](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type.go#L19>)
 
 ControlType ENUM\(
 
@@ -435,7 +435,7 @@ const (
 ```
 
 <a name="ParseControlType"></a>
-### func ParseControlType
+### func [ParseControlType](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L397>)
 
 ```go
 func ParseControlType(name string) (ControlType, error)
@@ -444,7 +444,7 @@ func ParseControlType(name string) (ControlType, error)
 ParseControlType attempts to convert a string to a ControlType.
 
 <a name="ControlType.IsValid"></a>
-### func \(ControlType\) IsValid
+### func \(ControlType\) [IsValid](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L380>)
 
 ```go
 func (x ControlType) IsValid() bool
@@ -453,7 +453,7 @@ func (x ControlType) IsValid() bool
 IsValid provides a quick way to determine if the typed value is part of the allowed enumerated values
 
 <a name="ControlType.MarshalText"></a>
-### func \(ControlType\) MarshalText
+### func \(ControlType\) [MarshalText](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L405>)
 
 ```go
 func (x ControlType) MarshalText() ([]byte, error)
@@ -462,7 +462,7 @@ func (x ControlType) MarshalText() ([]byte, error)
 MarshalText implements the text marshaller method.
 
 <a name="ControlType.Scan"></a>
-### func \(\*ControlType\) Scan
+### func \(\*ControlType\) [Scan](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L422>)
 
 ```go
 func (x *ControlType) Scan(value interface{}) (err error)
@@ -471,7 +471,7 @@ func (x *ControlType) Scan(value interface{}) (err error)
 Scan implements the Scanner interface.
 
 <a name="ControlType.String"></a>
-### func \(ControlType\) String
+### func \(ControlType\) [String](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L374>)
 
 ```go
 func (x ControlType) String() string
@@ -480,7 +480,7 @@ func (x ControlType) String() string
 String implements the Stringer interface.
 
 <a name="ControlType.UnmarshalText"></a>
-### func \(\*ControlType\) UnmarshalText
+### func \(\*ControlType\) [UnmarshalText](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L410>)
 
 ```go
 func (x *ControlType) UnmarshalText(text []byte) error
@@ -489,7 +489,7 @@ func (x *ControlType) UnmarshalText(text []byte) error
 UnmarshalText implements the text unmarshaller method.
 
 <a name="ControlType.Value"></a>
-### func \(ControlType\) Value
+### func \(ControlType\) [Value](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L455>)
 
 ```go
 func (x ControlType) Value() (driver.Value, error)
@@ -498,7 +498,7 @@ func (x ControlType) Value() (driver.Value, error)
 Value implements the driver Valuer interface.
 
 <a name="LogicOperator"></a>
-## type LogicOperator
+## type [LogicOperator](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type.go#L29>)
 
 LogicOperator ENUM\(
 
@@ -525,7 +525,7 @@ const (
 ```
 
 <a name="ParseLogicOperator"></a>
-### func ParseLogicOperator
+### func [ParseLogicOperator](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L498>)
 
 ```go
 func ParseLogicOperator(name string) (LogicOperator, error)
@@ -534,7 +534,7 @@ func ParseLogicOperator(name string) (LogicOperator, error)
 ParseLogicOperator attempts to convert a string to a LogicOperator.
 
 <a name="LogicOperator.IsValid"></a>
-### func \(LogicOperator\) IsValid
+### func \(LogicOperator\) [IsValid](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L487>)
 
 ```go
 func (x LogicOperator) IsValid() bool
@@ -543,7 +543,7 @@ func (x LogicOperator) IsValid() bool
 IsValid provides a quick way to determine if the typed value is part of the allowed enumerated values
 
 <a name="LogicOperator.MarshalText"></a>
-### func \(LogicOperator\) MarshalText
+### func \(LogicOperator\) [MarshalText](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L506>)
 
 ```go
 func (x LogicOperator) MarshalText() ([]byte, error)
@@ -552,7 +552,7 @@ func (x LogicOperator) MarshalText() ([]byte, error)
 MarshalText implements the text marshaller method.
 
 <a name="LogicOperator.Scan"></a>
-### func \(\*LogicOperator\) Scan
+### func \(\*LogicOperator\) [Scan](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L523>)
 
 ```go
 func (x *LogicOperator) Scan(value interface{}) (err error)
@@ -561,7 +561,7 @@ func (x *LogicOperator) Scan(value interface{}) (err error)
 Scan implements the Scanner interface.
 
 <a name="LogicOperator.String"></a>
-### func \(LogicOperator\) String
+### func \(LogicOperator\) [String](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L481>)
 
 ```go
 func (x LogicOperator) String() string
@@ -570,7 +570,7 @@ func (x LogicOperator) String() string
 String implements the Stringer interface.
 
 <a name="LogicOperator.UnmarshalText"></a>
-### func \(\*LogicOperator\) UnmarshalText
+### func \(\*LogicOperator\) [UnmarshalText](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L511>)
 
 ```go
 func (x *LogicOperator) UnmarshalText(text []byte) error
@@ -579,7 +579,7 @@ func (x *LogicOperator) UnmarshalText(text []byte) error
 UnmarshalText implements the text unmarshaller method.
 
 <a name="LogicOperator.Value"></a>
-### func \(LogicOperator\) Value
+### func \(LogicOperator\) [Value](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/type_enum.go#L556>)
 
 ```go
 func (x LogicOperator) Value() (driver.Value, error)
@@ -588,7 +588,7 @@ func (x LogicOperator) Value() (driver.Value, error)
 Value implements the driver Valuer interface.
 
 <a name="ReadableValue"></a>
-## type ReadableValue
+## type [ReadableValue](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/request.go#L28-L33>)
 
 ReadableValue is a generic type that represents a human\-readable value with a corresponding backend value. It has two fields: \`Label\` \(the human\-readable form of the value\) and \`Value\` \(the value for the backend\).
 
@@ -602,7 +602,7 @@ type ReadableValue[T any] struct {
 ```
 
 <a name="Request"></a>
-## type Request
+## type [Request](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/request.go#L6-L9>)
 
 Request is a struct representing a filter request. Operator is the logic operator used for the request. Fields is a slice of RequestField, representing the fields to be used for the filtering.
 
@@ -614,7 +614,7 @@ type Request struct {
 ```
 
 <a name="RequestField"></a>
-## type RequestField
+## type [RequestField](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/request.go#L45-L51>)
 
 RequestField represents a field in a request Field Name: The name of the field Field Keys: Sequence of keys of a nested key structure \- only used for fields with a nested structure. Example: Tag \-\> Name: ABC \(which would be represented as \[\]string\{"Tag", "Name: ABC"\} \) Field Operator: The comparison operator for the field Field Value: The value of the field, which can be a list of values or a single value
 
@@ -629,7 +629,7 @@ type RequestField struct {
 ```
 
 <a name="RequestOption"></a>
-## type RequestOption
+## type [RequestOption](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/request.go#L18-L24>)
 
 RequestOption configures a field for validation
 
@@ -646,7 +646,7 @@ type RequestOption struct {
 ```
 
 <a name="RequestOptionType"></a>
-## type RequestOptionType
+## type [RequestOptionType](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/request.go#L36-L38>)
 
 RequestOptionType configures the type of control for a field in a request option.
 
