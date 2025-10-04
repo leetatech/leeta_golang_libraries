@@ -14,7 +14,7 @@ import "github.com/leetatech/leeta_golang_libraries/mongodb/migration"
 
 
 <a name="Migration"></a>
-## type Migration
+## type [Migration](<https://github.com/leetatech/leeta_golang_libraries/blob/main/mongodb/migration/init.go#L26-L31>)
 
 Migration handles the process of importing JSON data files into MongoDB collections. It maps file names to collection names, manages the MongoDB client connection, specifies the directory containing data files, and holds the target database name.
 
@@ -35,7 +35,7 @@ type Migration struct {
 ```
 
 <a name="NewMigration"></a>
-### func NewMigration
+### func [NewMigration](<https://github.com/leetatech/leeta_golang_libraries/blob/main/mongodb/migration/init.go#L34>)
 
 ```go
 func NewMigration(client *mongo.Client, fileToCollection map[string]string, dir string) *Migration
@@ -44,7 +44,7 @@ func NewMigration(client *mongo.Client, fileToCollection map[string]string, dir 
 NewMigration creates a new Migration instance.
 
 <a name="Migration.Up"></a>
-### func \(\*Migration\) Up
+### func \(\*Migration\) [Up](<https://github.com/leetatech/leeta_golang_libraries/blob/main/mongodb/migration/init.go#L53>)
 
 ```go
 func (m *Migration) Up(ctx context.Context) error

@@ -15,7 +15,7 @@ import "github.com/leetatech/leeta_golang_libraries/mongodb"
 
 
 <a name="BuildMongoFilterQuery"></a>
-## func BuildMongoFilterQuery
+## func [BuildMongoFilterQuery](<https://github.com/leetatech/leeta_golang_libraries/blob/main/mongodb/query.go#L14>)
 
 ```go
 func BuildMongoFilterQuery(requestFilter *filter.Request, fieldMapping map[string]string) bson.M
@@ -24,7 +24,7 @@ func BuildMongoFilterQuery(requestFilter *filter.Request, fieldMapping map[strin
 BuildMongoFilterQuery constructs a MongoDB filter query based on the provided request filter and a field mapping. It supports both "and" and "or" operators for combining field conditions. TODO: handle filter field mapping better
 
 <a name="GetPaginatedOpts"></a>
-## func GetPaginatedOpts
+## func [GetPaginatedOpts](<https://github.com/leetatech/leeta_golang_libraries/blob/main/mongodb/query.go#L56>)
 
 ```go
 func GetPaginatedOpts(pageSize, pageIndex int64) *options.FindOptions
@@ -33,7 +33,7 @@ func GetPaginatedOpts(pageSize, pageIndex int64) *options.FindOptions
 GetPaginatedOpts returns MongoDB find options for pagination. It calculates the number of documents to skip and the limit based on the given page size and page index. If pageIndex or pageSize are less than 1, it sets sensible defaults.
 
 <a name="Client"></a>
-## type Client
+## type [Client](<https://github.com/leetatech/leeta_golang_libraries/blob/main/mongodb/client.go#L11>)
 
 
 
@@ -42,7 +42,7 @@ type Client *mongo.Client
 ```
 
 <a name="NewClient"></a>
-### func NewClient
+### func [NewClient](<https://github.com/leetatech/leeta_golang_libraries/blob/main/mongodb/client.go#L16>)
 
 ```go
 func NewClient(ctx context.Context, clientOpts *options.ClientOptions) (Client, error)
