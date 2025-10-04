@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt/v5"
 	"github.com/leetatech/leeta_golang_libraries/errs"
 	"github.com/rs/zerolog/log"
 	"google.golang.org/grpc/metadata"
@@ -20,7 +20,7 @@ import (
 
 // UserClaims represents the JWT claims for a user, including standard claims and custom fields.
 type UserClaims struct {
-	jwt.StandardClaims
+	jwt.RegisteredClaims
 	UserID   string `json:"user_id"`
 	DeviceID string `json:"device_id"`
 	Email    string `json:"email"`
@@ -117,7 +117,7 @@ func buildPEM(blockType string, derBytes []byte) string {
 
 // GenerateTokenWithExpiration generates a signed JWT token with a 24-hour expiration using the provided claims.
 func (handler *Manager) GenerateTokenWithExpiration(claims *UserClaims) (string, error) {
-	claims.ExpiresAt = time.Now().Add(time.Hour * 24).Unix()
+	claims.ExpiresAt = jwt.NewNumericDate(time.Now().Add(time.Hour * 24))
 	token := jwt.NewWithClaims(jwt.SigningMethodRS256, claims)
 
 	return token.SignedString(handler.privateKey)
@@ -136,8 +136,16 @@ func (handler *Manager) GenerateAuthenticationToken(email, userID, deviceID, fcm
 
 // Valid checks if the token's claims are still valid (not expired).
 func (claims *UserClaims) Valid() error {
-	if !claims.VerifyExpiresAt(time.Now().Unix(), true) {
-		return fmt.Errorf("token has expired")
+	expirationTime, err := claims.GetExpirationTime()
+	if err != nil {
+		return fmt.Errorf("invalid expiration time: %w", err)
+	}
+	if expirationTime == nil {
+		return errors.New("expiration time is not set")
+	}
+
+	if time.Now().After(expirationTime.Time) {
+		return errors.New("token has expired")
 	}
 	return nil
 }
