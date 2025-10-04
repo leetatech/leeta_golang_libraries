@@ -32,7 +32,7 @@ var AuthenticatedUserMetadataKey = "AuthenticatedUser"
 ```
 
 <a name="WriteJSONResponse"></a>
-## func [WriteJSONResponse](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L249>)
+## func [WriteJSONResponse](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L257>)
 
 ```go
 func WriteJSONResponse(w http.ResponseWriter, code int, response any)
@@ -61,7 +61,7 @@ func New(publicKey, privateKey string) (*Manager, error)
 New creates a new Manager instance by parsing the provided RSA public and private keys.
 
 <a name="Manager.ExtractUserClaims"></a>
-### func \(\*Manager\) [ExtractUserClaims](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L229>)
+### func \(\*Manager\) [ExtractUserClaims](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L237>)
 
 ```go
 func (handler *Manager) ExtractUserClaims(ctx context.Context) (*UserClaims, error)
@@ -88,7 +88,7 @@ func (handler *Manager) GenerateTokenWithExpiration(claims *UserClaims) (string,
 GenerateTokenWithExpiration generates a signed JWT token with a 24\-hour expiration using the provided claims.
 
 <a name="Manager.ParseToken"></a>
-### func \(\*Manager\) [ParseToken](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L146>)
+### func \(\*Manager\) [ParseToken](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L154>)
 
 ```go
 func (handler *Manager) ParseToken(signedTokenString string) (*UserClaims, error)
@@ -97,7 +97,7 @@ func (handler *Manager) ParseToken(signedTokenString string) (*UserClaims, error
 ParseToken parses a signed JWT string and returns the user claims if valid.
 
 <a name="Manager.ValidateMiddleware"></a>
-### func \(\*Manager\) [ValidateMiddleware](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L173>)
+### func \(\*Manager\) [ValidateMiddleware](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L181>)
 
 ```go
 func (handler *Manager) ValidateMiddleware(next http.Handler) http.Handler
@@ -106,7 +106,7 @@ func (handler *Manager) ValidateMiddleware(next http.Handler) http.Handler
 ValidateMiddleware middleware required endpoints: verify claims and put claims on context
 
 <a name="Manager.ValidateRestrictedAccessMiddleware"></a>
-### func \(\*Manager\) [ValidateRestrictedAccessMiddleware](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L189>)
+### func \(\*Manager\) [ValidateRestrictedAccessMiddleware](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L197>)
 
 ```go
 func (handler *Manager) ValidateRestrictedAccessMiddleware(next http.Handler) http.Handler
@@ -135,7 +135,7 @@ UserClaims represents the JWT claims for a user, including standard claims and c
 
 ```go
 type UserClaims struct {
-    jwt.StandardClaims
+    jwt.RegisteredClaims
     UserID   string `json:"user_id"`
     DeviceID string `json:"device_id"`
     Email    string `json:"email"`

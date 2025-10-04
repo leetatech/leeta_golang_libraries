@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	github.com/badoux/checkmail v1.2.4
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/golang-jwt/jwt/v5 v5.3.0
 	github.com/google/uuid v1.6.0
 	github.com/oklog/ulid/v2 v2.1.1
 	github.com/rs/zerolog v1.34.0
@@ -15,7 +15,6 @@ require (
 )
 
 require (
-	github.com/golang-jwt/jwt/v5 v5.3.0 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/klauspost/compress v1.16.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
