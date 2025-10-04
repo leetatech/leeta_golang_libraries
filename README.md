@@ -1,4 +1,6 @@
-![Leeta Tech Logo](https://drive.google.com/file/d/19xEmsyrNgnATUpjgH0biYvLdsvFf0dWK/view)
+![Leeta Tech Logo](https://github.com/leetatech/leeta-webite-new/blob/main/src/assets/icons/full-logo.svg)
+
+![Leeta Tech Logo](https://drive.google.com/uc?export=view&id=19xEmsyrNgnATUpjgH0biYvLdsvFf0dWK) 
 
 # Leeta Golang Libraries
 
