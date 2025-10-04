@@ -229,7 +229,12 @@ func (handler *Manager) validateHeaderToken(authorizationHeader string, next htt
 		return
 	}
 
-	ctx, _ := handler.putClaimsOnContext(r.Context(), claims)
+	ctx, err := handler.putClaimsOnContext(r.Context(), claims)
+	if err != nil {
+		log.Error().Msgf("unable to put claims on context: %v", err)
+		WriteJSONResponse(w, http.StatusUnauthorized, errs.Body(errs.ErrorUnauthorized, err))
+		return
+	}
 	next.ServeHTTP(w, r.WithContext(ctx))
 }
 

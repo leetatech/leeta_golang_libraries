@@ -32,7 +32,7 @@ var AuthenticatedUserMetadataKey = "AuthenticatedUser"
 ```
 
 <a name="WriteJSONResponse"></a>
-## func [WriteJSONResponse](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L257>)
+## func [WriteJSONResponse](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L262>)
 
 ```go
 func WriteJSONResponse(w http.ResponseWriter, code int, response any)
@@ -61,7 +61,7 @@ func New(publicKey, privateKey string) (*Manager, error)
 New creates a new Manager instance by parsing the provided RSA public and private keys.
 
 <a name="Manager.ExtractUserClaims"></a>
-### func \(\*Manager\) [ExtractUserClaims](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L237>)
+### func \(\*Manager\) [ExtractUserClaims](<https://github.com/leetatech/leeta_golang_libraries/blob/main/jwtmiddleware/middleware.go#L242>)
 
 ```go
 func (handler *Manager) ExtractUserClaims(ctx context.Context) (*UserClaims, error)

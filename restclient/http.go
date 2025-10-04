@@ -40,7 +40,7 @@ func DoHTTPRequest(ctx context.Context, method string, data any, url string) (*h
 		return nil, err
 	}
 
-	if resp.StatusCode != http.StatusOK {
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
 		return nil, fmt.Errorf("HTTP error: %s", resp.Status)
 	}
 
