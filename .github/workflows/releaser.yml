@@ -1,22 +1,11 @@
-name: releaser
+name: goreleaser
 
 on:
-  workflow_dispatch:
-    inputs:
-      release-type:
-        type: choice
-        description: What kind of release do you want to do?
-        options:
-          - alpha
-          - patch
-          - minor
-          - major
-          - release-candidate
-        required: true
-      release-version:
-        type: string
-        description: Optional explicit version (overrides release-type). Must follow semantic versioning (e.g., v1.2.3).
-        required: false
+  pull_request:
+  push:
+    # run only against tags
+    tags:
+      - "*"
 
 permissions:
   contents: write
@@ -24,81 +13,21 @@ permissions:
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
           go-version: stable
-
-      - name: Determine next version
-        id: version
-        run: |
-          set -e
-          git fetch --tags
-
-          latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
-          echo "Latest tag: $latest_tag"
-
-          if [ -n "${{ github.event.inputs.release-version }}" ]; then
-            new_tag="${{ github.event.inputs.release-version }}"
-          else
-            major=$(echo "$latest_tag" | cut -d. -f1 | tr -d 'v')
-            minor=$(echo "$latest_tag" | cut -d. -f2)
-            patch=$(echo "$latest_tag" | cut -d. -f3)
-
-            case "${{ github.event.inputs.release-type }}" in
-              major)
-                major=$((major + 1)); minor=0; patch=0 ;;
-              minor)
-                minor=$((minor + 1)); patch=0 ;;
-              patch)
-                patch=$((patch + 1)) ;;
-              alpha)
-                patch=$((patch + 1))
-                new_tag="v${major}.${minor}.${patch}-alpha" ;;
-              release-candidate)
-                patch=$((patch + 1))
-                new_tag="v${major}.${minor}.${patch}-rc" ;;
-              *)
-                echo "Unknown release type: ${{ github.event.inputs.release-type }}"
-                exit 1 ;;
-            esac
-
-            if [ -z "$new_tag" ]; then
-              new_tag="v${major}.${minor}.${patch}"
-            fi
-          fi
-
-          echo "New tag: $new_tag"
-          echo "tag=$new_tag" >> $GITHUB_OUTPUT
-
-      - name: Create and push tag
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag -a "${{ steps.version.outputs.tag }}" -m "Release ${{ steps.version.outputs.tag }}"
-          git push origin "${{ steps.version.outputs.tag }}"
-
-      - name: Checkout tag for GoReleaser
-        run: |
-          git fetch --tags
-          git checkout "${{ steps.version.outputs.tag }}"
-          echo "Checked out tag: $(git describe --tags)"
-
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
           distribution: goreleaser
-          version: "~> v2"
+          # 'latest', 'nightly', or a semver
+          version: "~> v1"
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.LEETA_GITHUB_TOKEN }}
-
-
-				
