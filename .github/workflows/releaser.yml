@@ -1,6 +1,7 @@
 name: goreleaser
 
 on:
+  workflow_dispatch:
   pull_request:
   push:
     # run only against tags
@@ -26,7 +27,6 @@ jobs:
         uses: goreleaser/goreleaser-action@v6
         with:
           distribution: goreleaser
-          # 'latest', 'nightly', or a semver
           version: "~> v1"
           args: release --clean --skip=build
         env:
