@@ -1,8 +1,6 @@
 name: goreleaser
 
 on:
-  workflow_dispatch:
-  pull_request:
   push:
     # run only against new push to main branch
     branches:
@@ -23,7 +21,7 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: stable
-      - name: Clone Repository and run GoReleaser
+      - name: Clone Release Repository and run releaser
         run: |
           git clone https://github.com/leetatech/goreleaser &&
           cd goreleaser &&
