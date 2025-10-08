@@ -7,6 +7,8 @@ on:
     # run only against tags
     tags:
       - "*"
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -27,5 +29,5 @@ jobs:
         run: |
           git clone https://github.com/leetatech/goreleaser
           cd goreleaser
-          ./cmd/gorelease release --owner leetatech --repo ${{ github.event.repository.name }} --token ${{ secrets.LEETA_GITHUB_TOKEN }} --email ${{ github.event.pusher.email }} --author ${{ github.event.pusher.name }} --version minor 
+          ./cmd/gorelease --owner leetatech --repo ${{ github.event.repository.name }} --token ${{ secrets.LEETA_GITHUB_TOKEN }} --email ${{ github.event.pusher.email }} --author ${{ github.event.pusher.name }} --version minor 
 
