@@ -4,9 +4,7 @@ on:
   workflow_dispatch:
   pull_request:
   push:
-    # run only against tags
-    tags:
-      - "*"
+    # run only against new push to main branch
     branches:
       - main
 
