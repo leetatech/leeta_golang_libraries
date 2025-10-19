@@ -21,10 +21,8 @@ import (
 // UserClaims represents the JWT claims for a user, including standard claims and custom fields.
 type UserClaims struct {
 	jwt.RegisteredClaims
-	UserID   string `json:"user_id"`
-	DeviceID string `json:"device_id"`
-	Email    string `json:"email"`
-	FCMToken string `json:"fcm_token"`
+	UserID string `json:"user_id"`
+	Phone  string `json:"phone"`
 }
 
 // Manager handles JWT operations using RSA public and private keys.
@@ -124,12 +122,10 @@ func (handler *Manager) GenerateTokenWithExpiration(claims *UserClaims) (string,
 }
 
 // GenerateAuthenticationToken sets user details and generates a signed JWT token with expiration.
-func (handler *Manager) GenerateAuthenticationToken(email, userID, deviceID, fcmToken string) (string, error) {
+func (handler *Manager) GenerateAuthenticationToken(phone, userID string) (string, error) {
 	claims := UserClaims{
-		Email:    email,
-		UserID:   userID,
-		DeviceID: deviceID,
-		FCMToken: fcmToken,
+		Phone:  phone,
+		UserID: userID,
 	}
 	return handler.GenerateTokenWithExpiration(&claims)
 }
