@@ -2,7 +2,17 @@
 
 # Leeta Golang Libraries
 
-This repository contains all libraries written in Go and use by Leeta Technologies
+A collection of modular, production-ready utility packages for Go — built to speed up backend development with encryption, logging, database integration, and more.  
+Each module is lightweight, composable, and can be imported independently.
+
+## 📦 Installation
+
+You can install the library (or any submodule) directly using `go get`.
+
+### Install the entire library
+```bash
+go get github.com/yourusername/yourlibrary
+```
 
 ## Maintainer 
 
