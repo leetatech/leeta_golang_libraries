@@ -114,20 +114,20 @@ func buildPEM(blockType string, derBytes []byte) string {
 }
 
 // GenerateTokenWithExpiration generates a signed JWT token with a 24-hour expiration using the provided claims.
-func (handler *Manager) GenerateTokenWithExpiration(claims *UserClaims) (string, error) {
-	claims.ExpiresAt = jwt.NewNumericDate(time.Now().Add(time.Hour * 24))
+func (handler *Manager) GenerateTokenWithExpiration(claims *UserClaims, expiresAt time.Time) (string, error) {
+	claims.ExpiresAt = jwt.NewNumericDate(expiresAt)
 	token := jwt.NewWithClaims(jwt.SigningMethodRS256, claims)
 
 	return token.SignedString(handler.privateKey)
 }
 
 // GenerateAuthenticationToken sets user details and generates a signed JWT token with expiration.
-func (handler *Manager) GenerateAuthenticationToken(phone, userID string) (string, error) {
+func (handler *Manager) GenerateAuthenticationToken(phone, userID string, expiresAt time.Time) (string, error) {
 	claims := UserClaims{
 		Phone:  phone,
 		UserID: userID,
 	}
-	return handler.GenerateTokenWithExpiration(&claims)
+	return handler.GenerateTokenWithExpiration(&claims, expiresAt)
 }
 
 // Valid checks if the token's claims are still valid (not expired).
