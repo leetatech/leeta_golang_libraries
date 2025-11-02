@@ -126,6 +126,9 @@ func (handler *Manager) GenerateAuthenticationToken(phone, userID string, expire
 	claims := UserClaims{
 		Phone:  phone,
 		UserID: userID,
+		RegisteredClaims: jwt.RegisteredClaims{
+			ExpiresAt: jwt.NewNumericDate(expiresAt),
+		},
 	}
 	return handler.GenerateTokenWithExpiration(&claims, expiresAt)
 }
