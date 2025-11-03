@@ -23,6 +23,7 @@ type UserClaims struct {
 	jwt.RegisteredClaims
 	UserID string `json:"user_id"`
 	Phone  string `json:"phone"`
+	Role   string `json:"role"`
 }
 
 // Manager handles JWT operations using RSA public and private keys.
