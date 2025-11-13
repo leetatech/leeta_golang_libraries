@@ -62,6 +62,7 @@ const (
 	InvalidVendorIdError         ErrorCode = 1053
 	TooManyVendorsError          ErrorCode = 1054
 	S3ObjectNotFoundError        ErrorCode = 1055
+	DuplicateRecordError         ErrorCode = 1056
 )
 
 var (
@@ -121,6 +122,7 @@ var (
 		InvalidVendorIdError:         "InvalidVendorIdError",
 		TooManyVendorsError:          "TooManyVendorsError",
 		S3ObjectNotFoundError:        "S3ObjectNotFoundError",
+		DuplicateRecordError:         "DuplicateRecordError",
 	}
 
 	errorMessages = map[ErrorCode]string{
@@ -179,5 +181,6 @@ var (
 		InvalidVendorIdError:         "An error occurred because the vendor id is invalid",
 		TooManyVendorsError:          "An error occurred because the vendor already has another vendor item in cart",
 		S3ObjectNotFoundError:        "Object not found in s3 bucket",
+		DuplicateRecordError:         "The record with this unique id already exists in the db",
 	}
 )
