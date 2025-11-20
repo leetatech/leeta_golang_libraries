@@ -1,10 +1,7 @@
 package idgenerator
 
 import (
-	"crypto/rand"
-	"time"
-
-	"github.com/oklog/ulid/v2"
+	"github.com/google/uuid"
 )
 
 // Generator defines the interface for generating unique IDs.
@@ -20,8 +17,7 @@ func New() Generator {
 	return &idGenerator{}
 }
 
-// Generate creates a new ULID (Universally Unique Lexicographically Sortable Identifier) as a string.
-func (generator *idGenerator) Generate() string {
-	entropy := ulid.Monotonic(rand.Reader, 0)
-	return ulid.MustNew(ulid.Timestamp(time.Now()), entropy).String()
+// Generate creates a new UUID (Universally Unique Identifier) as a string.
+func (g *idGenerator) Generate() string {
+	return uuid.NewString()
 }
