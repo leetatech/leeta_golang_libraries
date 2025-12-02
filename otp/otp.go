@@ -20,9 +20,9 @@ func New() Generator {
 	return &generator{}
 }
 
-// Generate creates a new 6-digit numeric OTP using cryptographic randomness.
+// Generate creates a new 4-digit numeric OTP using cryptographic randomness.
 func (o *generator) Generate() (string, error) {
-	n, err := rand.Int(rand.Reader, big.NewInt(1000000))
+	n, err := rand.Int(rand.Reader, big.NewInt(10000))
 	if err != nil {
 		log.Error().Msg("unable to generate otp")
 		return "", fmt.Errorf("unable to generate otp: %w", err)
