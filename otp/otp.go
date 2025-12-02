@@ -27,5 +27,5 @@ func (o *generator) Generate() (string, error) {
 		log.Error().Msg("unable to generate otp")
 		return "", fmt.Errorf("unable to generate otp: %w", err)
 	}
-	return fmt.Sprintf("%06d", n.Int64()), nil
+	return fmt.Sprintf("%04d", n.Int64()), nil
 }
