@@ -45,7 +45,7 @@ const (
 	InvalidPageRequestError      ErrorCode = 1036
 	CartItemQuantityError        ErrorCode = 1037
 	CartItemRequestQuantityError ErrorCode = 1038
-	InvalidRequestError          ErrorCode = 1039 // generic
+	InvalidRequestError          ErrorCode = 1039
 	InternalError                ErrorCode = 1040
 	InvalidProductIdError        ErrorCode = 1041
 	InvalidDeliveryFeeError      ErrorCode = 1042
@@ -63,6 +63,7 @@ const (
 	TooManyVendorsError          ErrorCode = 1054
 	S3ObjectNotFoundError        ErrorCode = 1055
 	DuplicateRecordError         ErrorCode = 1056
+	ErrorForbidden               ErrorCode = 1057
 )
 
 var (
@@ -123,6 +124,7 @@ var (
 		TooManyVendorsError:          "TooManyVendorsError",
 		S3ObjectNotFoundError:        "S3ObjectNotFoundError",
 		DuplicateRecordError:         "DuplicateRecordError",
+		ErrorForbidden:               "ErrorForbidden",
 	}
 
 	errorMessages = map[ErrorCode]string{
@@ -182,5 +184,6 @@ var (
 		TooManyVendorsError:          "An error occurred because the vendor already has another vendor item in cart",
 		S3ObjectNotFoundError:        "Object not found in s3 bucket",
 		DuplicateRecordError:         "The record with this unique id already exists in the db",
+		ErrorForbidden:               "User does not have sufficient access",
 	}
 )
