@@ -1,0 +1,47 @@
+package query
+
+import (
+	"github.com/leetatech/leeta_golang_libraries/query/filter"
+	"github.com/leetatech/leeta_golang_libraries/query/paging"
+	"github.com/leetatech/leeta_golang_libraries/query/sorting"
+)
+
+// ResponseListWithMetadata represents a response containing a list of data with associated metadata.
+// The 'Metadata' field is of type 'Metadata' includes filter, paging, and sorting information used in the query.
+// The 'Data' field is a slice of type 'T' and represents the data retrieved.
+type ResponseListWithMetadata[T any] struct {
+	Metadata Metadata `json:"metadata" binding:"required"`
+	Data     []T      `json:"data" binding:"required"`
+}
+
+// ResponseWithMetadata represents a response with associated metadata.
+// The metadata includes filter, paging, and sorting information.
+// The 'Metadata' field is of type 'Metadata' includes filter, paging, and sorting information used in the query.
+// The 'Data' field is of any type and represents the data retrieved by the query.
+type ResponseWithMetadata[T any] struct {
+	Metadata Metadata `json:"metadata" binding:"required"`
+	Data     T        `json:"data" binding:"required"`
+}
+
+// Metadata represents the metadata used in a query.
+type Metadata struct {
+	Filter  *filter.Request  `json:"filter,omitempty"`
+	Paging  *paging.Response `json:"paging,omitempty"`
+	Sorting *sorting.Request `json:"sorting,omitempty"`
+}
+
+// NewMetadata creates a new Metadata object based on the provided ResultSelector and totalResults.
+func NewMetadata(resultSelector ResultSelector, totalResults uint64) Metadata {
+	if resultSelector.Filter != nil {
+		for i, field := range resultSelector.Filter.Fields {
+			if field.Keys == nil {
+				resultSelector.Filter.Fields[i].Keys = []string{}
+			}
+		}
+	}
+	return Metadata{
+		Filter:  resultSelector.Filter,
+		Paging:  paging.NewResponse(resultSelector.Paging, totalResults),
+		Sorting: resultSelector.Sorting,
+	}
+}
