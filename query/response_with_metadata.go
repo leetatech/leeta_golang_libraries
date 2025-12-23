@@ -32,13 +32,6 @@ type Metadata struct {
 
 // NewMetadata creates a new Metadata object based on the provided ResultSelector and totalResults.
 func NewMetadata(resultSelector ResultSelector, totalResults uint64) Metadata {
-	if resultSelector.Filter != nil {
-		for i, field := range resultSelector.Filter.Fields {
-			if field.Keys == nil {
-				resultSelector.Filter.Fields[i].Keys = []string{}
-			}
-		}
-	}
 	return Metadata{
 		Filter:  resultSelector.Filter,
 		Paging:  paging.NewResponse(resultSelector.Paging, totalResults),

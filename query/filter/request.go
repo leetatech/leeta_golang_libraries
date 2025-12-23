@@ -39,12 +39,10 @@ type RequestOptionType struct {
 
 // RequestField represents a field in a request
 // Field Name: The name of the field
-// Field Keys: Sequence of keys of a nested key structure - only used for fields with a nested structure. Example: Tag -> Name: ABC (which would be represented as []string{"Tag", "Name: ABC"} )
 // Field Operator: The comparison operator for the field
 // Field Value: The value of the field, which can be a list of values or a single value
 type RequestField struct {
 	Name     string          `json:"name" binding:"required"`
-	Keys     []string        `json:"keys,omitempty"`
 	Operator CompareOperator `json:"operator" binding:"required"`
 	// Value can be a list of values or a value
 	Value any `json:"value" binding:"required"`
