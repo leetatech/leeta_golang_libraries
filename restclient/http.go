@@ -5,7 +5,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/rs/zerolog/log"
@@ -67,12 +69,7 @@ func DoRetryableHTTPRequest(ctx context.Context, method string, data any, url st
 			return nil, ctx.Err()
 		}
 
-		var body *bytes.Reader
-		if bodyBytes != nil {
-			body = bytes.NewReader(bodyBytes)
-		} else {
-			body = bytes.NewReader(nil)
-		}
+		body := bytes.NewReader(bodyBytes)
 
 		req, err := http.NewRequestWithContext(ctx, method, url, body)
 		if err != nil {
@@ -89,7 +86,6 @@ func DoRetryableHTTPRequest(ctx context.Context, method string, data any, url st
 			Msg("making HTTP request")
 
 		resp, err := defaultHTTPClient.Do(req)
-
 		if err != nil {
 			if attempt == defaultMaxRetries {
 				return nil, err
@@ -109,16 +105,25 @@ func DoRetryableHTTPRequest(ctx context.Context, method string, data any, url st
 			continue
 		}
 
+		respBody, _ := io.ReadAll(resp.Body)
+		resp.Body.Close()
+
+		bodyText := strings.TrimSpace(string(respBody))
+
+		// Retry on 5xx
 		if resp.StatusCode >= 500 {
 			if attempt == defaultMaxRetries {
-				return resp, fmt.Errorf("HTTP error: %s", resp.Status)
+				return nil, fmt.Errorf(
+					"http %d: %s",
+					resp.StatusCode,
+					bodyText,
+				)
 			}
-
-			resp.Body.Close()
 
 			log.Warn().
 				Int("status", resp.StatusCode).
 				Int("attempt", attempt+1).
+				Str("body", bodyText).
 				Msg("server error, retrying")
 
 			select {
@@ -130,11 +135,19 @@ func DoRetryableHTTPRequest(ctx context.Context, method string, data any, url st
 			continue
 		}
 
+		// Fail fast on 4xx (BAD REQUEST, UNAUTHORIZED, etc.)
 		if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-			return resp, fmt.Errorf("HTTP error: %s", resp.Status)
+			return nil, fmt.Errorf(
+				"http %d: %s",
+				resp.StatusCode,
+				bodyText,
+			)
 		}
 
+		// Success: recreate body so caller can read it
+		resp.Body = io.NopCloser(bytes.NewBuffer(respBody))
 		return resp, nil
 	}
+
 	return nil, fmt.Errorf("exceeded max retries")
 }
