@@ -64,6 +64,7 @@ const (
 	S3ObjectNotFoundError        ErrorCode = 1055
 	DuplicateRecordError         ErrorCode = 1056
 	ErrorForbidden               ErrorCode = 1057
+	ErrorImcompleteOrder         ErrorCode = 1058
 )
 
 var (
@@ -125,6 +126,7 @@ var (
 		S3ObjectNotFoundError:        "S3ObjectNotFoundError",
 		DuplicateRecordError:         "DuplicateRecordError",
 		ErrorForbidden:               "ErrorForbidden",
+		ErrorImcompleteOrder:         "ErrorImcompleteOrder",
 	}
 
 	errorMessages = map[ErrorCode]string{
@@ -185,5 +187,6 @@ var (
 		S3ObjectNotFoundError:        "Object not found in s3 bucket",
 		DuplicateRecordError:         "The record with this unique id already exists in the db",
 		ErrorForbidden:               "User does not have sufficient access",
+		ErrorImcompleteOrder:         "The Order is not complete",
 	}
 )
