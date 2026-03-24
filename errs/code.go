@@ -65,6 +65,8 @@ const (
 	DuplicateRecordError         ErrorCode = 1056
 	ErrorForbidden               ErrorCode = 1057
 	ErrorImcompleteOrder         ErrorCode = 1058
+	S3ObjectInvalidTypeError     ErrorCode = 1059
+	InsufficientOrderError       ErrorCode = 1060
 )
 
 var (
@@ -127,6 +129,8 @@ var (
 		DuplicateRecordError:         "DuplicateRecordError",
 		ErrorForbidden:               "ErrorForbidden",
 		ErrorImcompleteOrder:         "ErrorImcompleteOrder",
+		S3ObjectInvalidTypeError:     "S3ObjectInvalidTypeError",
+		InsufficientOrderError:       "InsufficientOrderError",
 	}
 
 	errorMessages = map[ErrorCode]string{
@@ -188,5 +192,7 @@ var (
 		DuplicateRecordError:         "The record with this unique id already exists in the db",
 		ErrorForbidden:               "User does not have sufficient access",
 		ErrorImcompleteOrder:         "The Order is not complete",
+		S3ObjectInvalidTypeError:     "The S3 object expected type is invalid",
+		InsufficientOrderError:       "The order quantity is not up to the required order quantity",
 	}
 )
