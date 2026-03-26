@@ -86,7 +86,7 @@ const (
     InvalidPageRequestError      ErrorCode = 1036
     CartItemQuantityError        ErrorCode = 1037
     CartItemRequestQuantityError ErrorCode = 1038
-    InvalidRequestError          ErrorCode = 1039 // generic
+    InvalidRequestError          ErrorCode = 1039
     InternalError                ErrorCode = 1040
     InvalidProductIdError        ErrorCode = 1041
     InvalidDeliveryFeeError      ErrorCode = 1042
@@ -102,6 +102,13 @@ const (
     DuplicateVendorBusinessError ErrorCode = 1052
     InvalidVendorIdError         ErrorCode = 1053
     TooManyVendorsError          ErrorCode = 1054
+    S3ObjectNotFoundError        ErrorCode = 1055
+    DuplicateRecordError         ErrorCode = 1056
+    ErrorForbidden               ErrorCode = 1057
+    ErrorImcompleteOrder         ErrorCode = 1058
+    S3ObjectInvalidTypeError     ErrorCode = 1059
+    InsufficientOrderError       ErrorCode = 1060
+    VendorOffineError            ErrorCode = 1061
 )
 ```
 

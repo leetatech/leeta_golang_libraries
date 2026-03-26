@@ -614,9 +614,9 @@ type Request struct {
 ```
 
 <a name="RequestField"></a>
-## type [RequestField](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/request.go#L45-L51>)
+## type [RequestField](<https://github.com/leetatech/leeta_golang_libraries/blob/main/query/filter/request.go#L44-L49>)
 
-RequestField represents a field in a request Field Name: The name of the field Field Keys: Sequence of keys of a nested key structure \- only used for fields with a nested structure. Example: Tag \-\> Name: ABC \(which would be represented as \[\]string\{"Tag", "Name: ABC"\} \) Field Operator: The comparison operator for the field Field Value: The value of the field, which can be a list of values or a single value
+RequestField represents a field in a request Field Name: The name of the field Field Operator: The comparison operator for the field Field Value: The value of the field, which can be a list of values or a single value
 
 ```go
 type RequestField struct {

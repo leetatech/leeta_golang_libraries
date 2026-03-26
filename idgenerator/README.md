@@ -13,7 +13,7 @@ import "github.com/leetatech/leeta_golang_libraries/idgenerator"
 
 
 <a name="Generator"></a>
-## type [Generator](<https://github.com/leetatech/leeta_golang_libraries/blob/main/idgenerator/idgenerator.go#L11-L13>)
+## type [Generator](<https://github.com/leetatech/leeta_golang_libraries/blob/main/idgenerator/idgenerator.go#L8-L10>)
 
 Generator defines the interface for generating unique IDs.
 
@@ -24,7 +24,7 @@ type Generator interface {
 ```
 
 <a name="New"></a>
-### func [New](<https://github.com/leetatech/leeta_golang_libraries/blob/main/idgenerator/idgenerator.go#L19>)
+### func [New](<https://github.com/leetatech/leeta_golang_libraries/blob/main/idgenerator/idgenerator.go#L16>)
 
 ```go
 func New() Generator

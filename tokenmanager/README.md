@@ -13,11 +13,10 @@ import "github.com/leetatech/leeta_golang_libraries/tokenmanager"
 - [type Manager](<#Manager>)
   - [func New\(publicKey, privateKey string\) \(\*Manager, error\)](<#New>)
   - [func \(handler \*Manager\) ExtractUserClaims\(ctx context.Context\) \(\*UserClaims, error\)](<#Manager.ExtractUserClaims>)
-  - [func \(handler \*Manager\) GenerateAuthenticationToken\(phone, userID string\) \(string, error\)](<#Manager.GenerateAuthenticationToken>)
-  - [func \(handler \*Manager\) GenerateTokenWithExpiration\(claims \*UserClaims\) \(string, error\)](<#Manager.GenerateTokenWithExpiration>)
+  - [func \(handler \*Manager\) GenerateAuthenticationToken\(phone, userID string, expiresAt time.Time\) \(string, error\)](<#Manager.GenerateAuthenticationToken>)
+  - [func \(handler \*Manager\) GenerateTokenWithExpiration\(claims \*UserClaims, expiresAt time.Time\) \(string, error\)](<#Manager.GenerateTokenWithExpiration>)
   - [func \(handler \*Manager\) ParseToken\(signedTokenString string\) \(\*UserClaims, error\)](<#Manager.ParseToken>)
   - [func \(handler \*Manager\) ValidateMiddleware\(next http.Handler\) http.Handler](<#Manager.ValidateMiddleware>)
-  - [func \(handler \*Manager\) ValidateRestrictedAccessMiddleware\(next http.Handler\) http.Handler](<#Manager.ValidateRestrictedAccessMiddleware>)
 - [type TokenManager](<#TokenManager>)
 - [type UserClaims](<#UserClaims>)
   - [func \(claims \*UserClaims\) Valid\(\) error](<#UserClaims.Valid>)
@@ -32,7 +31,7 @@ var AuthenticatedUserMetadataKey = "AuthenticatedUser"
 ```
 
 <a name="WriteJSONResponse"></a>
-## func [WriteJSONResponse](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L258>)
+## func [WriteJSONResponse](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L246>)
 
 ```go
 func WriteJSONResponse(w http.ResponseWriter, code int, response any)
@@ -41,7 +40,7 @@ func WriteJSONResponse(w http.ResponseWriter, code int, response any)
 WriteJSONResponse writes a JSON response with the given status code and response data to the HTTP response writer.
 
 <a name="Manager"></a>
-## type [Manager](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L29-L32>)
+## type [Manager](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L30-L33>)
 
 Manager handles JWT operations using RSA public and private keys.
 
@@ -52,7 +51,7 @@ type Manager struct {
 ```
 
 <a name="New"></a>
-### func [New](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L46>)
+### func [New](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L47>)
 
 ```go
 func New(publicKey, privateKey string) (*Manager, error)
@@ -61,7 +60,7 @@ func New(publicKey, privateKey string) (*Manager, error)
 New creates a new Manager instance by parsing the provided RSA public and private keys.
 
 <a name="Manager.ExtractUserClaims"></a>
-### func \(\*Manager\) [ExtractUserClaims](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L238>)
+### func \(\*Manager\) [ExtractUserClaims](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L226>)
 
 ```go
 func (handler *Manager) ExtractUserClaims(ctx context.Context) (*UserClaims, error)
@@ -70,25 +69,25 @@ func (handler *Manager) ExtractUserClaims(ctx context.Context) (*UserClaims, err
 ExtractUserClaims returns claims from an authenticated user
 
 <a name="Manager.GenerateAuthenticationToken"></a>
-### func \(\*Manager\) [GenerateAuthenticationToken](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L125>)
+### func \(\*Manager\) [GenerateAuthenticationToken](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L126>)
 
 ```go
-func (handler *Manager) GenerateAuthenticationToken(phone, userID string) (string, error)
+func (handler *Manager) GenerateAuthenticationToken(phone, userID string, expiresAt time.Time) (string, error)
 ```
 
 GenerateAuthenticationToken sets user details and generates a signed JWT token with expiration.
 
 <a name="Manager.GenerateTokenWithExpiration"></a>
-### func \(\*Manager\) [GenerateTokenWithExpiration](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L117>)
+### func \(\*Manager\) [GenerateTokenWithExpiration](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L118>)
 
 ```go
-func (handler *Manager) GenerateTokenWithExpiration(claims *UserClaims) (string, error)
+func (handler *Manager) GenerateTokenWithExpiration(claims *UserClaims, expiresAt time.Time) (string, error)
 ```
 
 GenerateTokenWithExpiration generates a signed JWT token with a 24\-hour expiration using the provided claims.
 
 <a name="Manager.ParseToken"></a>
-### func \(\*Manager\) [ParseToken](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L150>)
+### func \(\*Manager\) [ParseToken](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L154>)
 
 ```go
 func (handler *Manager) ParseToken(signedTokenString string) (*UserClaims, error)
@@ -97,7 +96,7 @@ func (handler *Manager) ParseToken(signedTokenString string) (*UserClaims, error
 ParseToken parses a signed JWT string and returns the user claims if valid.
 
 <a name="Manager.ValidateMiddleware"></a>
-### func \(\*Manager\) [ValidateMiddleware](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L177>)
+### func \(\*Manager\) [ValidateMiddleware](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L181>)
 
 ```go
 func (handler *Manager) ValidateMiddleware(next http.Handler) http.Handler
@@ -105,17 +104,8 @@ func (handler *Manager) ValidateMiddleware(next http.Handler) http.Handler
 
 ValidateMiddleware middleware required endpoints: verify claims and put claims on context
 
-<a name="Manager.ValidateRestrictedAccessMiddleware"></a>
-### func \(\*Manager\) [ValidateRestrictedAccessMiddleware](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L193>)
-
-```go
-func (handler *Manager) ValidateRestrictedAccessMiddleware(next http.Handler) http.Handler
-```
-
-ValidateRestrictedAccessMiddleware middleware required endpoints: verify claims extensively check if they have superior access to these endpoints and put claims on context
-
 <a name="TokenManager"></a>
-## type [TokenManager](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L35-L39>)
+## type [TokenManager](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L36-L40>)
 
 TokenManager defines the interface for JWT token parsing and user claims extraction.
 
@@ -129,7 +119,7 @@ type TokenManager interface {
 ```
 
 <a name="UserClaims"></a>
-## type [UserClaims](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L22-L26>)
+## type [UserClaims](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L22-L27>)
 
 UserClaims represents the JWT claims for a user, including standard claims and custom fields.
 
@@ -138,11 +128,12 @@ type UserClaims struct {
     jwt.RegisteredClaims
     UserID string `json:"user_id"`
     Phone  string `json:"phone"`
+    Role   string `json:"role"`
 }
 ```
 
 <a name="UserClaims.Valid"></a>
-### func \(\*UserClaims\) [Valid](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L134>)
+### func \(\*UserClaims\) [Valid](<https://github.com/leetatech/leeta_golang_libraries/blob/main/tokenmanager/token.go#L138>)
 
 ```go
 func (claims *UserClaims) Valid() error

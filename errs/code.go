@@ -67,6 +67,7 @@ const (
 	ErrorImcompleteOrder         ErrorCode = 1058
 	S3ObjectInvalidTypeError     ErrorCode = 1059
 	InsufficientOrderError       ErrorCode = 1060
+	VendorOffineError            ErrorCode = 1061
 )
 
 var (
@@ -131,6 +132,7 @@ var (
 		ErrorImcompleteOrder:         "ErrorImcompleteOrder",
 		S3ObjectInvalidTypeError:     "S3ObjectInvalidTypeError",
 		InsufficientOrderError:       "InsufficientOrderError",
+		VendorOffineError:            "VendorOffineError",
 	}
 
 	errorMessages = map[ErrorCode]string{
@@ -194,5 +196,6 @@ var (
 		ErrorImcompleteOrder:         "The Order is not complete",
 		S3ObjectInvalidTypeError:     "The S3 object expected type is invalid",
 		InsufficientOrderError:       "The order quantity is not up to the required order quantity",
+		VendorOffineError:            "Vendor is offline",
 	}
 )
