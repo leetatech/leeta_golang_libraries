@@ -11,7 +11,7 @@ You can install the library (or any submodule) directly using `go get`.
 
 ### Install the entire library
 ```bash
-go get github.com/yourusername/yourlibrary
+go get github.com/leetatech/leeta_golang_libraries
 ```
 
 ## Maintainer 
@@ -20,6 +20,6 @@ This project is main by [Leeta Technologies](https://www.getleeta.com)
 
 ## License 
 
-Copyright (c) 2025 [Leeta Technologies](https://www.getleeta.com)
+Copyright (c) 2026 [Leeta Technologies](https://www.getleeta.com)
 
 Licensed user the (GNU General Public License v3.0 or later)(LICENSE).
