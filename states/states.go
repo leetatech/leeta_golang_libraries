@@ -14,7 +14,7 @@ const getStatePath = "/states/"
 // Returns the state information or an error if the request or decoding fails.
 func GetState(ctx context.Context, name, url string) (state State, err error) {
 	getStateURL := url + getStatePath + name
-	resp, err := restclient.DoHTTPRequest(ctx, http.MethodGet, nil, getStateURL)
+	resp, err := restclient.DoRetryableHTTPRequest(ctx, http.MethodGet, nil, getStateURL)
 	if err != nil {
 		return state, err
 	}
@@ -33,7 +33,7 @@ func GetState(ctx context.Context, name, url string) (state State, err error) {
 // Returns a slice of State or an error if the request or decoding fails.
 func GetAllStates(ctx context.Context, url string) (stateList []State, err error) {
 	listStateURL := url + getStatePath
-	resp, err := restclient.DoHTTPRequest(ctx, http.MethodGet, nil, listStateURL)
+	resp, err := restclient.DoRetryableHTTPRequest(ctx, http.MethodGet, nil, listStateURL)
 	if err != nil {
 		return nil, err
 	}
